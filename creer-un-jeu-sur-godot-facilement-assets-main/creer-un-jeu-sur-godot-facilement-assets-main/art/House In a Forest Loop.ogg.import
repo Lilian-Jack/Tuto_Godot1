@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b68y0bqixmqjn"
+path="res://.godot/imported/House In a Forest Loop.ogg-ae71550c7a1d7ed9671e6b3acecfa0ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/House In a Forest Loop.ogg"
+dest_files=["res://.godot/imported/House In a Forest Loop.ogg-ae71550c7a1d7ed9671e6b3acecfa0ae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

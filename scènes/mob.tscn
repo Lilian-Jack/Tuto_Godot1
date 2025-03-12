@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bemt7qad75hff"]
+
+[ext_resource type="Script" uid="uid://cukxeyseaui5t" path="res://mob.gd" id="1_in40c"]
+[ext_resource type="Texture2D" uid="uid://uv0kddsimhrw" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemyFlyingAlt_1.png" id="2_2d6ki"]
+[ext_resource type="Texture2D" uid="uid://3c6vtt7nfwoe" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemyFlyingAlt_2.png" id="3_yg0nj"]
+[ext_resource type="Texture2D" uid="uid://qqopla7k5imk" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemyWalking_1.png" id="4_u0uhp"]
+[ext_resource type="Texture2D" uid="uid://mjtfc3l006sa" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemyWalking_2.png" id="5_rhm1k"]
+[ext_resource type="Texture2D" uid="uid://bc3382rlxbj66" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemySwimming_1.png" id="6_pan07"]
+[ext_resource type="Texture2D" uid="uid://diimvey81sdcc" path="res://creer-un-jeu-sur-godot-facilement-assets-main/creer-un-jeu-sur-godot-facilement-assets-main/art/enemySwimming_2.png" id="7_awhpg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_athkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2d6ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yg0nj")
+}],
+"loop": true,
+"name": &"ghost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_u0uhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rhm1k")
+}],
+"loop": true,
+"name": &"skeleton",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pan07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_awhpg")
+}],
+"loop": true,
+"name": &"slime",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8tdy8"]
+radius = 4.2
+height = 14.0
+
+[node name="mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_in40c")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_athkd")
+animation = &"slime"
+frame_progress = 0.149201
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_8tdy8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
