@@ -3,18 +3,22 @@ extends Node2D
 @export var mob_scene : PackedScene
 var score 
 
-func _ready():
-	new_game()
+
 
 
 func game_over() -> void:
+	$Music.stop()
+	$GameOverSound.play()
 	$scoretimer.stop()
 	$mobtimer.stop()
-	
+	$HUD.show_game_over()
 func new_game():
+	$Music.play()
 	score = 0
 	$player.start($startposition.position)
 	$starttimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("GET READY!")
 
 
 func _on_starttimer_timeout():
@@ -24,6 +28,7 @@ func _on_starttimer_timeout():
 
 func _on_scoretimer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 
 func _on_mobtimer_timeout() -> void:
